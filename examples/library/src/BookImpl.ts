@@ -21,12 +21,12 @@ import {
 } from "./internal.js"
 
 export class BookImpl extends CirculatingItemImpl implements Book {
-    protected _indexes: ecore.EMap<string, number>
-    protected _category: BookCategory
     protected _author: Writer
-    protected _title: string
+    protected _category: BookCategory
+    protected _indexes: ecore.EMap<string, number>
     protected _pages: number
     protected _tableOfContents: ecore.EList<string>
+    protected _title: string
 
     constructor() {
         super()
