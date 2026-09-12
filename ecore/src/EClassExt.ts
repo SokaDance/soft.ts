@@ -11,7 +11,6 @@ import {
     AbstractEAdapter,
     EAttribute,
     EClass,
-    EClassifier,
     EClassImpl,
     EcoreConstants,
     ENotification,

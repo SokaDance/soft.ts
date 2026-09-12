@@ -55,4 +55,3 @@ describe("EFactoryExt", () => {
         expect(factory.convertToString(bytesType, bytes)).toBe("hello")
     })
 })
-

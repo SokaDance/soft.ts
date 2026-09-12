@@ -229,7 +229,13 @@ export class BookImpl extends CirculatingItemImpl implements Book {
     // get the value of indexes
     getIndexes(): ecore.EMap<string, number> {
         if (this._indexes == null) {
-            this._indexes = new ecore.BasicEObjectMap<string, number>(getLibraryPackage().getBookIndex())
+            this._indexes = new ecore.BasicEObjectMap<string, number>(
+                getLibraryPackage().getBookIndex(),
+                this,
+                LibraryConstants.BOOK__INDEXES,
+                -1,
+                false
+            )
         }
         return this._indexes
     }

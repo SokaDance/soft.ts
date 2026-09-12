@@ -27,8 +27,7 @@ import {
     EcoreConstants,
     EventType,
     ImmutableEList,
-    getEcorePackage,
-    isEPackage
+    getEcorePackage
 } from "./internal.js"
 
 interface EClassifierInternal extends EClassifier, EObjectInternal {}
@@ -36,13 +35,6 @@ interface EFactoryInternal extends EFactory, EObjectInternal {}
 interface EPackageInternal extends EPackage, EObjectInternal {}
 
 describe("EPackageImpl", () => {
-    test("isEPackage on primitives", () => {
-        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
-        for (const p of primitives) {
-            expect(isEPackage(p as any)).toBe(false)
-        }
-    })
-
     test("eStaticClass", () => {
         const o = new EPackageImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getEPackage())

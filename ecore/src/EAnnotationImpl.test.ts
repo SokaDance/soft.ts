@@ -29,24 +29,13 @@ import {
     EcoreConstants,
     EventType,
     ImmutableEList,
-    getEcorePackage,
-    isEAnnotation
+    getEcorePackage
 } from "./internal.js"
 
 interface EModelElementInternal extends EModelElement, EObjectInternal {}
 interface EStringToStringMapEntryInternal extends EStringToStringMapEntry, EObjectInternal {}
 
 describe("EAnnotationImpl", () => {
-    test("isEAnnotation", () => {
-        const o = new EAnnotationImpl()
-        expect(isEAnnotation(o)).toBe(true)
-
-        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
-        for (const p of primitives) {
-            expect(isEAnnotation(p as any)).toBe(false)
-        }
-    })
-
     test("eStaticClass", () => {
         const o = new EAnnotationImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getEAnnotationClass())

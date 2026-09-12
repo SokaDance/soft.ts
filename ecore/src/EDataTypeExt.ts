@@ -7,7 +7,7 @@
 //
 // *****************************************************************************
 
-import { EClassifier, EcoreConstants, EDataType, EDataTypeImpl, EventType, Notification } from "./internal.js"
+import { EcoreConstants, EDataType, EDataTypeImpl, EventType, Notification } from "./internal.js"
 
 export function isEDataType(e: any): e is EDataType {
     return typeof e === "object" && e !== null && "isSerializable" in e

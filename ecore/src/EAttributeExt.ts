@@ -7,7 +7,7 @@
 //
 // *****************************************************************************
 
-import { EAttribute, EAttributeImpl, EClassExt, EcoreConstants, EDataType, EStructuralFeature } from "./internal.js"
+import { EAttribute, EAttributeImpl, EClassExt, EcoreConstants, EDataType } from "./internal.js"
 
 export function isEAttribute(s: any): s is EAttribute {
     return typeof s === "object" && s !== null && "getEAttributeType" in s

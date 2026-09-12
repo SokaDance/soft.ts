@@ -118,7 +118,11 @@ export class DocumentRootImpl extends ecore.EObjectImpl implements DocumentRoot 
     getXMLNSPrefixMap(): ecore.EMap<string, string> {
         if (this._xMLNSPrefixMap == null) {
             this._xMLNSPrefixMap = new ecore.BasicEObjectMap<string, string>(
-                ecore.getEcorePackage().getEStringToStringMapEntry()
+                ecore.getEcorePackage().getEStringToStringMapEntry(),
+                this,
+                LibraryConstants.DOCUMENT_ROOT__XMLNS_PREFIX_MAP,
+                -1,
+                false
             )
         }
         return this._xMLNSPrefixMap
@@ -135,7 +139,11 @@ export class DocumentRootImpl extends ecore.EObjectImpl implements DocumentRoot 
     getXSISchemaLocation(): ecore.EMap<string, string> {
         if (this._xSISchemaLocation == null) {
             this._xSISchemaLocation = new ecore.BasicEObjectMap<string, string>(
-                ecore.getEcorePackage().getEStringToStringMapEntry()
+                ecore.getEcorePackage().getEStringToStringMapEntry(),
+                this,
+                LibraryConstants.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION,
+                -1,
+                false
             )
         }
         return this._xSISchemaLocation

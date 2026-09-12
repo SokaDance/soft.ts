@@ -147,7 +147,13 @@ export class EAnnotationImpl extends EModelElementExt implements EAnnotation {
         return new BasicEObjectList<EObject>(this, EcoreConstants.EANNOTATION__CONTENTS, -1, true, true, false, false, false)
     }
     protected initDetails(): EMap<string, string> {
-        return new BasicEObjectMap<string, string>(getEcorePackage().getEStringToStringMapEntry(), this, EcoreConstants.EANNOTATION__DETAILS, -1, false)
+        return new BasicEObjectMap<string, string>(
+            getEcorePackage().getEStringToStringMapEntry(),
+            this,
+            EcoreConstants.EANNOTATION__DETAILS,
+            -1,
+            false
+        )
     }
     protected initReferences(): EList<EObject> {
         return new BasicEObjectList<EObject>(this, EcoreConstants.EANNOTATION__REFERENCES, -1, false, false, false, true, false)

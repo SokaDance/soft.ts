@@ -7,7 +7,18 @@
 //
 // *****************************************************************************
 
-import { EAttribute, EList, EObject, EObjectInternal, EObjectList, EReference, EStructuralFeature, ImmutableEList, isEAttribute, isEObject, isEReference } from "./internal.js"
+import {
+    EAttribute,
+    EList,
+    EObject,
+    EObjectInternal,
+    EObjectList,
+    EReference,
+    ImmutableEList,
+    isEAttribute,
+    isEObject,
+    isEReference
+} from "./internal.js"
 
 export class DeepCopy {
     private _objects: Map<EObject, EObject> = new Map()

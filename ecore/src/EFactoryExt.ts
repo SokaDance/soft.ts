@@ -10,7 +10,8 @@
 import { DynamicEObjectImpl, EClass, EDataType, EFactoryImpl, EObject, isEEnum } from "./internal.js"
 
 function getInstanceTypeName(eDataType: EDataType): string {
-    const eAnnotation = eDataType.getEAnnotation("http://net.masagroup/soft/2020/GenTS") || eDataType.getEAnnotation("http://net.masagroup/soft/2019/GenGo")
+    const eAnnotation =
+        eDataType.getEAnnotation("http://net.masagroup/soft/2020/GenTS") || eDataType.getEAnnotation("http://net.masagroup/soft/2019/GenGo")
     if (eAnnotation != null) {
         const typeName = eAnnotation.getDetails().getValue("instanceTypeName")
         if (typeName) {
