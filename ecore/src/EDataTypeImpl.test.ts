@@ -11,9 +11,19 @@
 
 import { anything, capture, instance, mock, verify } from "ts-mockito"
 import { describe, expect, test } from "vitest"
-import { EAdapter, EDataTypeImpl, EcoreConstants, getEcorePackage } from "./internal.js"
+import { EAdapter, EDataTypeImpl, EcoreConstants, getEcorePackage, isEDataType } from "./internal.js"
 
 describe("EDataTypeImpl", () => {
+    test("isEDataType", () => {
+        const o = new EDataTypeImpl()
+        expect(isEDataType(o)).toBe(true)
+
+        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
+        for (const p of primitives) {
+            expect(isEDataType(p as any)).toBe(false)
+        }
+    })
+
     test("eStaticClass", () => {
         const o = new EDataTypeImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getEDataType())

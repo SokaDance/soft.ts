@@ -11,9 +11,19 @@
 
 import { anything, capture, instance, mock, verify } from "ts-mockito"
 import { describe, expect, test } from "vitest"
-import { EAdapter, ENamedElementImpl, EcoreConstants, getEcorePackage } from "./internal.js"
+import { EAdapter, ENamedElementImpl, EcoreConstants, getEcorePackage, isENamedElement } from "./internal.js"
 
 describe("ENamedElementImpl", () => {
+    test("isENamedElement", () => {
+        const o = new ENamedElementImpl()
+        expect(isENamedElement(o)).toBe(true)
+
+        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
+        for (const p of primitives) {
+            expect(isENamedElement(p as any)).toBe(false)
+        }
+    })
+
     test("eStaticClass", () => {
         const o = new ENamedElementImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getENamedElement())

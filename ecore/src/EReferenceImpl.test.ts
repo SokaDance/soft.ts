@@ -26,7 +26,8 @@ import {
     EcoreConstants,
     ImmutableEList,
     URI,
-    getEcorePackage
+    getEcorePackage,
+    isEReference
 } from "./internal.js"
 
 interface EAttributeInternal extends EAttribute, EObjectInternal {}
@@ -34,6 +35,16 @@ interface EClassInternal extends EClass, EObjectInternal {}
 interface EReferenceInternal extends EReference, EObjectInternal {}
 
 describe("EReferenceImpl", () => {
+    test("isEReference", () => {
+        const o = new EReferenceImpl()
+        expect(isEReference(o)).toBe(true)
+
+        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
+        for (const p of primitives) {
+            expect(isEReference(p as any)).toBe(false)
+        }
+    })
+
     test("eStaticClass", () => {
         const o = new EReferenceImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getEReference())

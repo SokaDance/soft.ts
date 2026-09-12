@@ -19,12 +19,23 @@ import {
     EObjectInternal,
     EStructuralFeatureImpl,
     EcoreConstants,
-    getEcorePackage
+    getEcorePackage,
+    isEStructuralFeature
 } from "./internal.js"
 
 interface EClassInternal extends EClass, EObjectInternal {}
 
 describe("EStructuralFeatureImpl", () => {
+    test("isEStructuralFeature", () => {
+        const o = new EStructuralFeatureImpl()
+        expect(isEStructuralFeature(o)).toBe(true)
+
+        const primitives = [42, "string", true, false, null, undefined, Symbol("sym"), 100n]
+        for (const p of primitives) {
+            expect(isEStructuralFeature(p as any)).toBe(false)
+        }
+    })
+
     test("eStaticClass", () => {
         const o = new EStructuralFeatureImpl()
         expect(o.eStaticClass()).toBe(getEcorePackage().getEStructuralFeature())
